@@ -6,19 +6,22 @@ import (
 	"integrador.com/punto"
 )
 
+func swap(x, y *int) {
+	*x, *y = *y, *x
+}
 func main() {
 	a := punto.Puntos{}
-	b := punto.Punto{3, 2}
-	c := punto.Punto{4, 2}
-	d := punto.Punto{6, 2}
-	e := punto.Punto{1, 2}
+	b := punto.Punto{X: 3, Y: 2}
+	c := punto.Punto{X: 4, Y: 2}
+	d := punto.Punto{X: 6, Y: 2}
+	e := punto.Punto{X: 1, Y: 2}
 
 	a = append(a, b, c, d, e)
 
-	for i, value := range a {
+	for i, _ := range a {
 		p := &a[i]
 		if (*p).X > (*p).Y {
-			p.Swap(value.X, value.Y)
+			swap(&p.X, &p.Y)
 		}
 		fmt.Printf("%+v", *p)
 	}
